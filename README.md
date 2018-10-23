@@ -57,4 +57,8 @@ for checking whether the script works properly you can use this script:
     $channel->close();
     $connection->close();
 
+you can change parameters in next files:
+config/common/amqp.php
+config/common/monolog.php
 
+also there is a public method $address in class Consumer for setup the consumer for POST request
