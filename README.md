@@ -3,26 +3,26 @@ app.php - for starting this application
 in time of execution this program you can use pclnt signals such as SIGTERM, SIGQUIT, SIGINT, SIGHUP.
 for checking whether the script works properly you can use this script:
 
-use PhpAmqpLib\Connection\AMQPStreamConnection;
-use PhpAmqpLib\Message\AMQPMessage;
+    use PhpAmqpLib\Connection\AMQPStreamConnection;
+    use PhpAmqpLib\Message\AMQPMessage;
 
-/**
- * @param array $credentials
- * @return string
- */
+    /**
+     * @param array $credentials
+     * @return string
+     */
 
-$credentials = [
-    'header' => 'POST',
-    'body' => 'It is jsonText',
-    'OtherProperties' =>[
-        'prop1' => 1,
-        'prop2' => 2
-    ],
-];
-$jsonCredentials = json_encode($credentials);
+    $credentials = [
+        'header' => 'POST',
+        'body' => 'It is jsonText',
+        'OtherProperties' =>[
+            'prop1' => 1,
+            'prop2' => 2
+        ],
+    ];
+    $jsonCredentials = json_encode($credentials);
 
-$exchange = 'router';
-$queue = 'msgs';
+    $exchange = 'router';
+    $queue = 'msgs';
 
     $connection = new AMQPStreamConnection(HOST, PORT, USER, PASS, VHOST);
     $channel = $connection->channel();
@@ -54,7 +54,7 @@ $queue = 'msgs';
 
     $channel->basic_publish($message, $exchange);
 
-$channel->close();
-$connection->close();
+    $channel->close();
+    $connection->close();
 
 
